@@ -18,7 +18,7 @@ public class GoombaBehaviour : MonoBehaviour
     public string wallTag = "Wall";
     public string goombaTag = "Goomba";
 
-    //bool facingRight = false;
+    bool facingRight = false;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +42,21 @@ public class GoombaBehaviour : MonoBehaviour
 
     void MoveDirection()
     {
+        if (rb.velocity == new Vector2(0, 0) && canMove)
+        {
+            moveX = -moveX;
+            Flip();
+        }
+
+        if (rb.velocity == new Vector2(1, 0) && moveX == -1)
+        {
+            moveX = -moveX;
+            Flip();
+        } else if (rb.velocity == new Vector2(-1, 0) && moveX == 1){
+            moveX = -moveX;
+            Flip();
+        }
+
         moveDirection = new Vector2(moveX, 0).normalized;
     }
 
@@ -52,20 +67,16 @@ public class GoombaBehaviour : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == mapTag)
-        {
-            canMove = true;
-        }
-
-        if (collision.tag == wallTag || collision.tag == goombaTag)
-        {
-            moveX = -moveX;
-        }
-
         if (collision.tag == goombaTag)
         {
             moveX = -moveX;
-            Debug.Log("YO");
+            Flip();
+            //Debug.Log("Flip");
+        }
+
+        if (collision.tag == mapTag)
+        {
+            canMove = true;
         }
     }
 
@@ -75,5 +86,14 @@ public class GoombaBehaviour : MonoBehaviour
         {
             canMove = false;
         }
+    }
+
+    void Flip()
+    {
+        Vector3 currentScale = this.transform.localScale;
+        currentScale.x *= -1;
+        this.transform.localScale = currentScale;
+
+        facingRight = !facingRight;
     }
 }
