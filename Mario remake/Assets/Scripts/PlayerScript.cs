@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
     public float speed = 5.0f;
     public float jumpForce = 100.0f;
+
+    public GameObject UiManager;
     private Rigidbody2D rb;
     public bool isGrounded;
     private Vector2 movement;
@@ -26,6 +29,10 @@ public class PlayerScript : MonoBehaviour
     {
         Flip();
         IsGrounded();
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            ReloadCurrentScene();
+        }
     }
 
     void FixedUpdate()
@@ -40,6 +47,13 @@ public class PlayerScript : MonoBehaviour
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             isGrounded = false;
         }
+    }
+
+    void ReloadCurrentScene()
+    {
+        // 获取当前场景的索引，并重新加载该场景
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        SceneManager.LoadScene(currentSceneIndex);
     }
 
     /*void OnCollisionEnter(Collision other)
@@ -71,6 +85,15 @@ public class PlayerScript : MonoBehaviour
                 spriteRenderer.flipX = true;
             }
         }
+    void OnCollisionEnter2D(Collision2D collider)
+        {
+            if (collider.gameObject.CompareTag("Box"))
+                {
+                    UIManager uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+                    uiManager.boxToCoin(collider.gameObject);
+                }
+        }
+
     }
 
 

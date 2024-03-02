@@ -19,15 +19,15 @@ public class AudioManager : MonoBehaviour
         }
     }
     public void CheckBG(){
-        // if(audioSource.isPlaying = false){
-        //     audioSource.Play();
-        // }
+        if(audioSource.isPlaying == false){
+            audioSource.Play();
+        }
     }
     public void Play(int index,bool bgOver = false){
         if(bgOver){
             audioSource.Stop();
         }
-        // audioSource.PlayOneShot(audioSource.clip[index];
+        audioSource.PlayOneShot(audioSource.clip);
     }
 
     
