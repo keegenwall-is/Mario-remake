@@ -15,6 +15,7 @@ public class PlayerScript : MonoBehaviour
     private bool isBig = false;
     private Vector3 originalSize; 
 
+    public Camera camera;
 
 
     public bool isGrounded;
@@ -60,6 +61,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (onPipe)
             {
+                camera.transform.position = new Vector3(150f, -13f, -10f);
                 this.transform.position = underworldSpawn.transform.position;
                 //Debug.Log("Pipe");
             }
