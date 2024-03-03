@@ -64375,11 +64375,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5878504073100245276, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: m_Constraints
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5878504073100245276, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: m_GravityScale
-      value: 20
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7862455977980360303, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: m_Name
