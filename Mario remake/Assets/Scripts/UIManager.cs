@@ -20,7 +20,7 @@ public class UIManager : MonoBehaviour{
     }
     private void Awake(){
         Instance = this;
-        goldText = transform.Find("GoldNum/Text").GetComponent<Text>();
+        //goldText = transform.Find("GoldNum/Text").GetComponent<Text>();
     }
     // Start is called before the first frame update
     void Start()
@@ -50,7 +50,7 @@ public class UIManager : MonoBehaviour{
 
         // 生成一个介于 1 到 5 之间的随机整数
         int randomNumber = random.Next(1, 6);
-        gameObject.active = false;
+        //gameObject.active = false;
         for (int i = 0; i < randomNumber; i++){
             GameObject spawnedPrefab = Instantiate(prefabCoin, new Vector3(coinPosX + i,coinPosY, 0), Quaternion.identity);
             StartCoroutine(DestroyAfterDelay(spawnedPrefab, 1f));

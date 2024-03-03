@@ -14,7 +14,7 @@ public class GoombaBehaviour : MonoBehaviour
 
     public bool canMove;
 
-    public string mapTag = "Map";
+    public string mapTag = "Ground";
     public string wallTag = "Wall";
     public string goombaTag = "Goomba";
 

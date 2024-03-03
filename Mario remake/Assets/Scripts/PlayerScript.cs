@@ -9,7 +9,14 @@ public class PlayerScript : MonoBehaviour
     public float jumpForce = 15.0f;
 
     private Rigidbody2D rb;
-    private bool isGrounded;
+    public bool isGrounded;
+
+    public GameObject underworldSpawn;
+
+    public GameObject overworldSpawn;
+
+    public bool onPipe = false;
+    public bool nextToPipe = false;
 
     void Start()
     {
@@ -22,11 +29,26 @@ public class PlayerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             ReloadCurrentScene();
-}
+        }
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             isGrounded = false;
+        }
+        if (Input.GetKeyDown("s"))
+        {
+            if (onPipe)
+            {
+                this.transform.position = underworldSpawn.transform.position;
+                //Debug.Log("Pipe");
+            }
+        }
+        if (Input.GetKeyDown("d"))
+        {
+            if (nextToPipe)
+            {
+                this.transform.position = overworldSpawn.transform.position;
+            }
         }
     }
 
@@ -49,13 +71,30 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = true; 
-            Debug.Log("Grounded");
+            //Debug.Log("Grounded");
         }
 
-         if (other.gameObject.CompareTag("Box"))
-                {
-                    UIManager uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-                    uiManager.boxToCoin(other.gameObject);
-                }
+        if (other.gameObject.CompareTag("Box"))
+        {
+            UIManager uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+            uiManager.boxToCoin(other.gameObject);
+        }
+
+        if (other.gameObject.CompareTag("UWPipe"))
+        {
+            onPipe = true;
+        } else if (other.gameObject.CompareTag("OWPipe"))
+        {
+            nextToPipe = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("UWPipe") || collision.gameObject.CompareTag("OWPipe"))
+        {
+            onPipe = false;
+            nextToPipe = false;
+        }
     }
 }

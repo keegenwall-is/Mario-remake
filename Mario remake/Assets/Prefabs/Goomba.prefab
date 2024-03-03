@@ -124,7 +124,7 @@ MonoBehaviour:
   moveSpeed: 5
   rb: {fileID: 2603729695334036580}
   canMove: 0
-  mapTag: Map
+  mapTag: Ground
   wallTag: Wall
   goombaTag: Goomba
 --- !u!58 &2603729695334036601
