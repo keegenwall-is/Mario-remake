@@ -4,12 +4,15 @@ using UnityEngine.SceneManagement;
 public class PlayerScript : MonoBehaviour
 {
     public float speed = 5.0f;
+    private float moveHorizontal;
 
     public GameObject UiManager;
     public float jumpForce = 15.0f;
 
     private Rigidbody2D rb;
     public bool isGrounded;
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     public GameObject underworldSpawn;
 
@@ -21,11 +24,21 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-
+        Flip();
+        if (isGrounded)
+        {
+            animator.SetBool("isGrounded", true);
+        }
+        else if (!isGrounded)
+        {
+            animator.SetBool("isGrounded", false);
+        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             ReloadCurrentScene();
@@ -96,6 +109,18 @@ public class PlayerScript : MonoBehaviour
         {
             onPipe = false;
             nextToPipe = false;
+        }
+    }
+
+    public void Flip()
+    {
+        if (rb.velocity.x >= 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
         }
     }
 }
