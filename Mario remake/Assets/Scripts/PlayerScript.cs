@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour
     private Vector3 originalSize; 
 
     public Camera camera;
+    public CameraMovement CameraMovement;
 
 
     public bool isGrounded;
@@ -35,6 +36,7 @@ public class PlayerScript : MonoBehaviour
         originalSize = transform.localScale;
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        CameraMovement = camera.GetComponent<CameraMovement>();
     }
 
     void Update()
@@ -61,7 +63,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (onPipe)
             {
-                camera.transform.position = new Vector3(150f, -13f, -10f);
+                CameraMovement.isUnderground = true;
                 this.transform.position = underworldSpawn.transform.position;
                 //Debug.Log("Pipe");
             }
@@ -70,6 +72,7 @@ public class PlayerScript : MonoBehaviour
         {
             if (nextToPipe)
             {
+                CameraMovement.isUnderground = false;
                 this.transform.position = overworldSpawn.transform.position;
             }
         }
