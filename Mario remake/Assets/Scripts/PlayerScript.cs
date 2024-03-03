@@ -5,6 +5,9 @@ using System.Collections;
 public class PlayerScript : MonoBehaviour
 {
     public float speed = 5.0f;
+    private float moveHorizontal;
+
+    public GameObject UiManager;
     public float jumpForce = 15.0f;
     public Vector3 growthFactor = new Vector3(1.5f, 1.5f, 1);
     private Rigidbody2D rb;
@@ -12,6 +15,8 @@ public class PlayerScript : MonoBehaviour
     private Vector3 originalSize; 
     public GameObject UiManager;
     public bool isGrounded;
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
 
     public GameObject underworldSpawn;
 
@@ -24,10 +29,21 @@ public class PlayerScript : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         originalSize = transform.localScale;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
+        Flip();
+        if (isGrounded)
+        {
+            animator.SetBool("isGrounded", true);
+        }
+        else if (!isGrounded)
+        {
+            animator.SetBool("isGrounded", false);
+        }
         if (Input.GetKeyDown(KeyCode.R))
         {
             ReloadCurrentScene();
@@ -113,5 +129,16 @@ public class PlayerScript : MonoBehaviour
     {
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentSceneIndex);
+    }
+    public void Flip()
+    {
+        if (rb.velocity.x >= 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
     }
 }
