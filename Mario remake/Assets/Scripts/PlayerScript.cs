@@ -126,6 +126,15 @@ public class PlayerScript : MonoBehaviour
             MarioDie();
         }
 
+        if (hasFire)
+        {
+            animator.SetBool("fireFlower", true);
+        }
+        else if (!hasFire)
+        {
+            animator.SetBool("fireFlower", false);
+        }
+
     }
 
     void FixedUpdate()
@@ -194,20 +203,17 @@ public class PlayerScript : MonoBehaviour
     {
         if (!isBig)
         {
+            animator.SetBool("isBig", true);
             transform.localScale = Vector3.Scale(transform.localScale, growthFactor);
             isBig = true;
+            
             hp = 2;
             Debug.Log(hp);
         }
     }
 
 
-    public IEnumerator ShrinkBack()
-    {
-        yield return new WaitForSeconds(5);
-        transform.localScale = originalSize; 
-        isBig = false;
-    }
+   
 
     void ReloadCurrentScene()
     {
@@ -240,6 +246,7 @@ public class PlayerScript : MonoBehaviour
         {
             transform.localScale = originalSize;
             isBig = false;
+            animator.SetBool("isBig", false);
         }
     }
 
@@ -260,6 +267,7 @@ public class PlayerScript : MonoBehaviour
         {
             isBig = true;
             hasFire = true;
+            
             hp = 3;
             Debug.Log(hp);
         }
@@ -290,11 +298,12 @@ public class PlayerScript : MonoBehaviour
 
         if (hp < 2)
         {
-            ShrinkBack();
+            Shrink();
         }
         if (hp < 3)
         {
             hasFire = false;
+            
         }
         
     }
