@@ -19,6 +19,8 @@ public class PlayerScript : MonoBehaviour
     public Camera camera;
     public CameraMovement CameraMovement;
 
+    public float hp;
+
 
     public bool isGrounded;
     private SpriteRenderer spriteRenderer;
@@ -180,6 +182,7 @@ public class PlayerScript : MonoBehaviour
 
     public IEnumerator ShrinkBack()
     {
+        yield return new WaitForSeconds(5);
         transform.localScale = originalSize; 
         isBig = false;
     }
