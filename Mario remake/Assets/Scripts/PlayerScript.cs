@@ -122,7 +122,7 @@ public class PlayerScript : MonoBehaviour
         {
             transform.localScale = Vector3.Scale(transform.localScale, growthFactor); 
             isBig = true;
-            hp += hp;
+            hp = 2;
             //StartCoroutine(ShrinkBack());
         }
     }
