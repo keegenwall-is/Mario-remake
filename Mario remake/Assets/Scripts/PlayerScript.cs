@@ -46,6 +46,7 @@ public class PlayerScript : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         CameraMovement = camera.GetComponent<CameraMovement>();
+        hp = 1;
     }
 
     void Update()
@@ -120,6 +121,10 @@ public class PlayerScript : MonoBehaviour
         }
 
         //Debug.Log(hp);
+        if (hp == 0)
+        {
+            MarioDie();
+        }
 
     }
 
@@ -285,10 +290,7 @@ public class PlayerScript : MonoBehaviour
         {
             hasFire = false;
         }
-        if (hp == 0)
-        {
-            MarioDie();
-        }
+        
     }
 
     IEnumerator MarioImmune()
