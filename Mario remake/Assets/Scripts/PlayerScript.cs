@@ -103,8 +103,8 @@ public class PlayerScript : MonoBehaviour
         {
             if (nextToPipe)
             {
-                CameraMovement.isUnderground = false;
                 this.transform.position = overworldSpawn.transform.position;
+                CameraMovement.isUnderground = false;
             }
         }
 
@@ -319,5 +319,6 @@ public class PlayerScript : MonoBehaviour
     {
         speed = 0;
         jumpForce = 0;
+        
     }
 }
