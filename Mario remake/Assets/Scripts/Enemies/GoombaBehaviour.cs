@@ -13,6 +13,7 @@ public class GoombaBehaviour : MonoBehaviour
     private Vector2 moveDirection;
 
     public bool canMove;
+    public bool isSeen;
 
     public string mapTag = "Ground";
     public string wallTag = "Wall";
@@ -23,22 +24,26 @@ public class GoombaBehaviour : MonoBehaviour
     public GameObject player;
     private PlayerScript playerScript;
 
+    private Camera mainCamera;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<PlayerScript>();
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
         MoveDirection();
+        CheckCameraView();
     }
 
     void FixedUpdate()
     {
-        if (canMove)
+        if (canMove && isSeen)
         {
             Move();
         }
@@ -107,5 +112,16 @@ public class GoombaBehaviour : MonoBehaviour
         this.transform.localScale = currentScale;
 
         facingRight = !facingRight;
+    }
+
+    void CheckCameraView()
+    {
+        if (GeometryUtility.TestPlanesAABB(GeometryUtility.CalculateFrustumPlanes(mainCamera), GetComponent<Renderer>().bounds))
+        {
+            isSeen = true;
+        } else
+        {
+            isSeen = false;
+        }
     }
 }
