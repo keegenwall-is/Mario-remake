@@ -124,7 +124,7 @@ public class PlayerScript : MonoBehaviour
 
             if (!hitFromAbove && isBig)
             {
-                Shrink();
+                ShrinkBack();
             }
             else if (hitFromAbove)
             {
@@ -153,8 +153,7 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
-
-    public IEnumerator ShrinkBack()
+    void ShrinkBack()
     {
         transform.localScale = originalSize; 
         isBig = false;
