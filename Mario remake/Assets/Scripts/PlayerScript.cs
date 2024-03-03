@@ -136,6 +136,17 @@ public class PlayerScript : MonoBehaviour
         {
             isGrounded = true;
         }
+
+        if (other.gameObject.CompareTag("OWPipe"))
+        {
+            onPipe = false;
+            nextToPipe = true;
+        }
+        if (other.gameObject.CompareTag("UWPipe"))
+        {
+            onPipe = true;
+            nextToPipe = false;
+        }
         else if (other.gameObject.CompareTag("Goomba"))
         {
             bool hitFromAbove = false;
