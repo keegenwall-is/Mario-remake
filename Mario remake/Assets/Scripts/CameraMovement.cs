@@ -17,7 +17,7 @@ public class CameraMovement : MonoBehaviour
     {
         if (!isUnderground)
         {
-            if (player.position.x >= -0.56f && player.position.x <= 196f)
+            if (player.position.x >= 1.1f && player.position.x <= 196f)
             {
                 transform.position = new Vector3(player.position.x, transform.position.y, -10f);
             }
