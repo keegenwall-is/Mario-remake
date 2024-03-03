@@ -56,8 +56,7 @@ public class PlayerScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.W) && isGrounded)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-            isGrounded = false;
+            Jump();
         }
          if (Input.GetKeyDown("s"))
         {
@@ -147,5 +146,11 @@ public class PlayerScript : MonoBehaviour
         {
             spriteRenderer.flipX = false;
         }
+    }
+
+    public void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        isGrounded = false;
     }
 }
