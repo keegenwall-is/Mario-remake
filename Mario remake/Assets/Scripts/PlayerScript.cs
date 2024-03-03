@@ -13,6 +13,7 @@ public class PlayerScript : MonoBehaviour
     private Rigidbody2D rb;
 
     private bool isBig = false;
+    private bool hasFire = false;
     private Vector3 originalSize; 
 
     public Camera camera;
@@ -29,6 +30,12 @@ public class PlayerScript : MonoBehaviour
 
     public bool onPipe = false;
     public bool nextToPipe = false;
+
+    public int hp = 1;
+
+    public bool marioImmune = false;
+
+    public GameObject FireBall;
 
     void Start()
     {
@@ -75,6 +82,17 @@ public class PlayerScript : MonoBehaviour
                 this.transform.position = overworldSpawn.transform.position;
             }
         }
+
+        if (hasFire)
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ShootFire();
+            }
+        }
+
+        //Debug.Log(hp);
+
     }
 
     void FixedUpdate()
@@ -130,13 +148,14 @@ public class PlayerScript : MonoBehaviour
         {
             transform.localScale = Vector3.Scale(transform.localScale, growthFactor);
             isBig = true;
+            hp = 2;
+            Debug.Log(hp);
         }
     }
 
 
     public IEnumerator ShrinkBack()
     {
-        yield return new WaitForSeconds(5); 
         transform.localScale = originalSize; 
         isBig = false;
     }
@@ -164,15 +183,16 @@ public class PlayerScript : MonoBehaviour
         // isGrounded = false;
     }
 
-    private void Shrink()
+    public void FirePower()
     {
-        if (isBig)
+        if (!hasFire)
         {
-            transform.localScale = originalSize;
-            isBig = false;
+            isBig = true;
+            hasFire = true;
+            hp = 3;
+            Debug.Log(hp);
         }
     }
-
     IEnumerator recoverAfterDelayUp(float delay)
     {
         yield return new WaitForSeconds(delay);
@@ -189,4 +209,53 @@ public class PlayerScript : MonoBehaviour
 
      
 
+    void ShootFire()
+    {
+        Instantiate(FireBall, new Vector2 (this.transform.position.x + 1, this.transform.position.y), Quaternion.identity);
+    }
+
+    public void TakeDamage()
+    {
+        if (!marioImmune)
+        {
+            if (hasFire && isBig)
+            {
+                hp = 2;
+            } else if (!hasFire && isBig)
+            {
+                hp = 1;
+            } else if (!hasFire && !isBig)
+            {
+                hp = 0;
+            }
+            StartCoroutine(MarioImmune());
+            Debug.Log(hp);
+        }
+
+        if (hp < 2)
+        {
+            ShrinkBack();
+        }
+        if (hp < 3)
+        {
+            hasFire = false;
+        }
+        if (hp == 0)
+        {
+            MarioDie();
+        }
+    }
+
+    IEnumerator MarioImmune()
+    {
+        marioImmune = true;
+        yield return new WaitForSeconds(3f);
+        marioImmune = false;
+    }
+
+    void MarioDie()
+    {
+        speed = 0;
+        jumpForce = 0;
+    }
 }

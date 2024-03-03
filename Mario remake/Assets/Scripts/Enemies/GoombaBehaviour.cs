@@ -85,7 +85,10 @@ public class GoombaBehaviour : MonoBehaviour
 
         if (collision.tag == "Player")
         {
-            playerScript.ShrinkBack();
+            if (collision.transform.position.y <= this.transform.position.y + 0.9)
+            {
+                playerScript.TakeDamage();
+            }
         }
     }
 
