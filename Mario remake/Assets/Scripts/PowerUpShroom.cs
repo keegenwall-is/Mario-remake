@@ -7,6 +7,8 @@ public class PowerUpShroom : MonoBehaviour
     public float speed = 2.0f;
     private bool isActivated = false;
 
+    public GameObject player;
+
     public void ActivateMushroom()
     {
         isActivated = true;
@@ -25,6 +27,8 @@ public class PowerUpShroom : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {   
+            PlayerScript player = GameObject.Find("Player").GetComponent<PlayerScript>();
+            player.Recoverlevelup();
             collision.gameObject.GetComponent<AudioSource>().Play();
             collision.gameObject.transform.localScale = new Vector3(2,2);
             collision.gameObject.GetComponent<PlayerScript>().Grow();

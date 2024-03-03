@@ -35,10 +35,8 @@ public class UIManager : MonoBehaviour{
 
     IEnumerator DestroyAfterDelay(GameObject obj, float delay)
     {
-        // 等待指定的延迟时间
         yield return new WaitForSeconds(delay);
 
-        // 摧毁预制体
         Destroy(obj);
     }
 
@@ -54,7 +52,6 @@ public class UIManager : MonoBehaviour{
         for (int i = 0; i < randomNumber; i++){
             GameObject spawnedPrefab = Instantiate(prefabCoin, new Vector3(coinPosX + i,coinPosY, 0), Quaternion.identity);
             StartCoroutine(DestroyAfterDelay(spawnedPrefab, 1f));
-        
         }
         this.addGoldScore(randomNumber);
 

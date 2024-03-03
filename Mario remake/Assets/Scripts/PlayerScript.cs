@@ -173,4 +173,20 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    IEnumerator recoverAfterDelayUp(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        this.gameObject.transform.localScale = Vector3.one;
+
+
+    
+    }
+
+    public void Recoverlevelup() {
+        Debug.Log("lok");
+        StartCoroutine(recoverAfterDelayUp(10));
+    }
+
+     
+
 }
