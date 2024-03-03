@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicMushroom : MonoBehaviour
+public class PowerUpShroom : MonoBehaviour
 {
     public float speed = 2.0f;
     private bool isActivated = false;

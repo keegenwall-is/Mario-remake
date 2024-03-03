@@ -83,28 +83,36 @@ public class PlayerScript : MonoBehaviour
         rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
     }
 
-   
+
     void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
         }
-        else if (other.gameObject.CompareTag("Goomba") && isBig)
+        else if (other.gameObject.CompareTag("Goomba"))
         {
-            Destroy(other.gameObject); 
-        }
-        if (other.gameObject.CompareTag("Box")) {
-            UIManager uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-            uiManager.boxToCoin(other.gameObject);
-        }
-        if (other.gameObject.CompareTag("UWPipe"))
-        {
-            onPipe = true;
-        } else if (other.gameObject.CompareTag("OWPipe")) {
-            nextToPipe = true;
+            bool hitFromAbove = false;
+            foreach (ContactPoint2D hit in other.contacts)
+            {
+                if (hit.normal.y > 0.5)
+                {
+                    hitFromAbove = true;
+                    break;
+                }
+            }
+
+            if (!hitFromAbove && isBig)
+            {
+                Shrink();
+            }
+            else if (hitFromAbove)
+            {
+                Destroy(other.gameObject); 
+            }
         }
     }
+
 
     void OnCollisionExit2D(Collision2D collision) {
         if (collision.gameObject.CompareTag("UWPipe") || collision.gameObject.CompareTag("OWPipe"))
@@ -118,11 +126,11 @@ public class PlayerScript : MonoBehaviour
     {
         if (!isBig)
         {
-            transform.localScale = Vector3.Scale(transform.localScale, growthFactor); 
+            transform.localScale = Vector3.Scale(transform.localScale, growthFactor);
             isBig = true;
-            StartCoroutine(ShrinkBack());
         }
     }
+
 
     IEnumerator ShrinkBack()
     {
@@ -153,4 +161,14 @@ public class PlayerScript : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         isGrounded = false;
     }
+
+    private void Shrink()
+    {
+        if (isBig)
+        {
+            transform.localScale = originalSize;
+            isBig = false;
+        }
+    }
+
 }
