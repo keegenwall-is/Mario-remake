@@ -83,7 +83,7 @@ public class GoombaBehaviour : MonoBehaviour
             //Debug.Log("Flip");
         }
 
-        if (collision.tag == mapTag)
+        if (collision.tag == mapTag || collision.tag == "Map")
         {
             canMove = true;
         }
@@ -99,7 +99,7 @@ public class GoombaBehaviour : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == mapTag)
+        if (collision.tag == mapTag || collision.tag == "Map")
         {
             canMove = false;
         }
