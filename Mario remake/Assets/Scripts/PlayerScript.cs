@@ -29,6 +29,8 @@ public class PlayerScript : MonoBehaviour
 
     public bool onPipe = false;
     public bool nextToPipe = false;
+    public bool movingLeft = false;
+    public bool ending = false;
 
     void Start()
     {
@@ -42,6 +44,28 @@ public class PlayerScript : MonoBehaviour
     void Update()
     {
         Flip();
+        if (rb.velocity.x > 0)
+        {
+            movingLeft = true;
+        }
+        else if (rb.velocity.x < 0)
+        {
+            movingLeft = false;
+        }
+
+        if (rb.velocity.x != 0)
+        {
+            animator.SetBool("isMoving", true);
+        }
+        else
+        {
+            animator.SetBool("isMoving", false);
+            if (movingLeft)
+            {
+                spriteRenderer.flipX = true;
+            }
+        }
+
         if (isGrounded)
         {
             animator.SetBool("isGrounded", true);
@@ -75,6 +99,11 @@ public class PlayerScript : MonoBehaviour
                 this.transform.position = overworldSpawn.transform.position;
             }
         }
+
+        if (ending && isGrounded)
+        {
+            animator.StopPlayback();
+        }
     }
 
     void FixedUpdate()
@@ -86,7 +115,7 @@ public class PlayerScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Ground"))
+        if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Map"))
         {
             isGrounded = true;
         }
@@ -132,7 +161,7 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-    IEnumerator ShrinkBack()
+    public IEnumerator ShrinkBack()
     {
         yield return new WaitForSeconds(5); 
         transform.localScale = originalSize; 
@@ -146,7 +175,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void Flip()
     {
-        if (rb.velocity.x >= 0)
+        if (rb.velocity.x > 0)
         {
             spriteRenderer.flipX = true;
         }
@@ -155,6 +184,8 @@ public class PlayerScript : MonoBehaviour
             spriteRenderer.flipX = false;
         }
     }
+
+   
 
     public void Jump()
     {
@@ -168,6 +199,17 @@ public class PlayerScript : MonoBehaviour
         {
             transform.localScale = originalSize;
             isBig = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Flagpole"))
+        {
+            ending = true;
+            animator.SetBool("flagpoleAnim", true);
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX;
+            rb.gravityScale = 3f;
         }
     }
 
