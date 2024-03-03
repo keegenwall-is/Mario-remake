@@ -64396,7 +64396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5878504073100245276, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: m_GravityScale
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7862455977980360303, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: m_Name
@@ -64412,11 +64412,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8409758020258278832, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8409758020258278832, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8409758020258278832, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: m_LocalPosition.x
@@ -64468,7 +64468,7 @@ PrefabInstance:
       objectReference: {fileID: 258252648}
     - target: {fileID: 8756498037148553248, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: jumpForce
-      value: 5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8756498037148553248, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: overworldSpawn
