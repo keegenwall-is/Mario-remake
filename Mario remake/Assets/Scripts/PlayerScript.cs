@@ -102,9 +102,8 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.CompareTag("UWPipe"))
         {
             onPipe = true;
-        }
-        else if (other.gameObject.CompareTag("OWPipe")) {
-             nextToPipe = true;
+        } else if (other.gameObject.CompareTag("OWPipe")) {
+            nextToPipe = true;
         }
     }
 
