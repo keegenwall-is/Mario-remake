@@ -146,6 +146,10 @@ public class PlayerScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
+        if (other.gameObject.CompareTag("Death"))
+        {
+            MarioDie();
+        }
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Map"))
         {
             isGrounded = true;
@@ -319,6 +323,6 @@ public class PlayerScript : MonoBehaviour
     {
         speed = 0;
         jumpForce = 0;
-        
+        animator.SetBool("isDead", true);
     }
 }
