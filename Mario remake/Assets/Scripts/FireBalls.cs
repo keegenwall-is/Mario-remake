@@ -31,6 +31,11 @@ public class FireBalls : MonoBehaviour
 
             rb.velocity = combinedDirection.normalized * bounceForce;
         }
+        else if (collision.gameObject.CompareTag("Goomba"))
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator LifeSpan()
