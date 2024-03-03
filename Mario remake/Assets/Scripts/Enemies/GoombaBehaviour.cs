@@ -20,10 +20,14 @@ public class GoombaBehaviour : MonoBehaviour
 
     bool facingRight = false;
 
+    public GameObject player;
+    private PlayerScript playerScript;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find("Player");
+        playerScript = player.GetComponent<PlayerScript>();
     }
 
     // Update is called once per frame
@@ -77,6 +81,11 @@ public class GoombaBehaviour : MonoBehaviour
         if (collision.tag == mapTag)
         {
             canMove = true;
+        }
+
+        if (collision.tag == "Player")
+        {
+            playerScript.ShrinkBack();
         }
     }
 

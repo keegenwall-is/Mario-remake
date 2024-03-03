@@ -30,6 +30,8 @@ public class PlayerScript : MonoBehaviour
     public bool onPipe = false;
     public bool nextToPipe = false;
 
+    public int hp = 1;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -120,15 +122,18 @@ public class PlayerScript : MonoBehaviour
         {
             transform.localScale = Vector3.Scale(transform.localScale, growthFactor); 
             isBig = true;
-            StartCoroutine(ShrinkBack());
+            hp += hp;
+            //StartCoroutine(ShrinkBack());
         }
     }
 
-    IEnumerator ShrinkBack()
+    public void ShrinkBack()
     {
-        yield return new WaitForSeconds(5); 
+        //yield return new WaitForSeconds(5); 
+        //yield return new WaitForSeconds(5); 
         transform.localScale = originalSize; 
         isBig = false;
+        hp -= hp;
     }
 
     void ReloadCurrentScene()
