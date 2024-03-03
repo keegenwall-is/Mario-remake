@@ -12,7 +12,7 @@ public class PlayerScript : MonoBehaviour
     public Vector3 growthFactor = new Vector3(1.5f, 1.5f, 1);
     private Rigidbody2D rb;
 
-    private bool isBig = false;
+    public bool isBig = false;
     private bool hasFire = false;
     private Vector3 originalSize; 
 
@@ -140,6 +140,12 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Ground") || other.gameObject.CompareTag("Map"))
         {
             isGrounded = true;
+        }
+
+        if (other.gameObject.CompareTag("Box"))
+        {
+            UIManager uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+            uiManager.boxToCoin(other.gameObject);
         }
 
         if (other.gameObject.CompareTag("OWPipe"))
