@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6633595813720319389}
   m_Layer: 0
   m_Name: BoxCollision
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 212986768488580110}
   m_Layer: 0
   m_Name: QuestionBlock
-  m_TagString: Box
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
