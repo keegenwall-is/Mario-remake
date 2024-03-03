@@ -70,7 +70,7 @@ public class PlayerScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Ground"))
         {
-            isGrounded = true; 
+            isGrounded = true;
             //Debug.Log("Grounded");
         }
 
@@ -83,7 +83,8 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.CompareTag("UWPipe"))
         {
             onPipe = true;
-        } else if (other.gameObject.CompareTag("OWPipe"))
+        }
+        else if (other.gameObject.CompareTag("OWPipe"))
         {
             nextToPipe = true;
         }
