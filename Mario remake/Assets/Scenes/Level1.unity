@@ -572,7 +572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201890914}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.1, z: -7.4934435}
+  m_LocalPosition: {x: 0, y: 1.41, z: -7.4934435}
   m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4934,6 +4934,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8409758020258278832, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
   m_PrefabInstance: {fileID: 799092253021114642}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1630048031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2884574295072810359, guid: 75c828570ce051f40ba146ec978435d3, type: 3}
+  m_PrefabInstance: {fileID: 1689897636}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1632787495
 GameObject:
@@ -63986,6 +63991,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0fb4c805b56f8409a02f071a9430c3, type: 3}
+--- !u!1 &2069993160 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5203867523590927738, guid: 129b46f406e889d46b42b6e98f7ee026, type: 3}
+  m_PrefabInstance: {fileID: 860852513}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2084580183 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7324861553203522451, guid: 59ae91297c5a05c4885211bc5556bbe6, type: 3}
@@ -64379,7 +64389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5878504073100245276, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: m_GravityScale
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7862455977980360303, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: m_Name
@@ -64392,6 +64402,14 @@ PrefabInstance:
     - target: {fileID: 8409758020258278832, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409758020258278832, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8409758020258278832, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8409758020258278832, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: m_LocalPosition.x
@@ -64434,13 +64452,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8756498037148553248, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8756498037148553248, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: UiManager
       value: 
       objectReference: {fileID: 258252648}
     - target: {fileID: 8756498037148553248, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
       propertyPath: jumpForce
-      value: 100
+      value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 8756498037148553248, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
+      propertyPath: overworldSpawn
+      value: 
+      objectReference: {fileID: 2069993160}
+    - target: {fileID: 8756498037148553248, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
+      propertyPath: underworldSpawn
+      value: 
+      objectReference: {fileID: 1630048031}
     m_RemovedComponents: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8409758020258278832, guid: 36fe4794111fdbd4a82de591d82c3151, type: 3}
