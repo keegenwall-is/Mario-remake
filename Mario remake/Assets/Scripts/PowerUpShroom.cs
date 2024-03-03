@@ -24,7 +24,9 @@ public class PowerUpShroom : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
-        {
+        {   
+            collision.gameObject.GetComponent<AudioSource>().Play();
+            collision.gameObject.transform.localScale = new Vector3(2,2);
             collision.gameObject.GetComponent<PlayerScript>().Grow();
             Destroy(gameObject);
         }

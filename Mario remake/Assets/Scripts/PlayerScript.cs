@@ -89,8 +89,10 @@ public class PlayerScript : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isGrounded = true;
-        }
-        else if (other.gameObject.CompareTag("Goomba"))
+        }else if (other.gameObject.CompareTag("Box")) {
+            UIManager uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+            uiManager.boxToCoin(other.gameObject);
+        }else if (other.gameObject.CompareTag("Goomba"))
         {
             bool hitFromAbove = false;
             foreach (ContactPoint2D hit in other.contacts)
@@ -132,7 +134,7 @@ public class PlayerScript : MonoBehaviour
     }
 
 
-    IEnumerator ShrinkBack()
+    public IEnumerator ShrinkBack()
     {
         yield return new WaitForSeconds(5); 
         transform.localScale = originalSize; 
@@ -158,8 +160,8 @@ public class PlayerScript : MonoBehaviour
 
     public void Jump()
     {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        isGrounded = false;
+        // rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        // isGrounded = false;
     }
 
     private void Shrink()
