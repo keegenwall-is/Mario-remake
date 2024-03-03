@@ -11,9 +11,12 @@ public class PlayerScript : MonoBehaviour
     public float jumpForce = 15.0f;
     public Vector3 growthFactor = new Vector3(1.5f, 1.5f, 1);
     private Rigidbody2D rb;
+
     private bool isBig = false;
     private Vector3 originalSize; 
-    public GameObject UiManager;
+
+
+
     public bool isGrounded;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
