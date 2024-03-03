@@ -63312,6 +63312,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goomba (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 2603729695334036600, guid: 2d0fb4c805b56f8409a02f071a9430c3, type: 3}
+      propertyPath: mapTag
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 2603729695334036602, guid: 2d0fb4c805b56f8409a02f071a9430c3, type: 3}
       propertyPath: m_RootOrder
       value: -1
@@ -63356,7 +63360,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -3349442177020579737, guid: 2d0fb4c805b56f8409a02f071a9430c3, type: 3}
+    - {fileID: -4237534252930845169, guid: 2d0fb4c805b56f8409a02f071a9430c3, type: 3}
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d0fb4c805b56f8409a02f071a9430c3, type: 3}
 --- !u!1 &1974999574
